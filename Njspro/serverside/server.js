@@ -9,17 +9,17 @@ const { promiseHooks } = require("v8")
 
 
 const clint=new MongoClient("mongodb://127.0.0.1:27017/")
-const port=3001;
+const port=3000;
 const app=http.createServer(async (req,res)=>{
     //createdb
-    const db=clint.db("EmployeDetails")
+    const db=clint.db("Employes")
     //collection
     const collection=db.collection("employe")
     const path=url.parse(req.url);
     console.log(path);
     if (path.pathname=="/") {
         res.writeHead(200,{"Content-Type":"text/html"});
-        res.end(fs.readFileSync("../clientside/index.html"))
+        res.end(fs.readFileSync("../clientside/pages/index.html"))
     }
     else if(path.pathname=="/css/index.css"){
         res.writeHead(200,{"Content-Type":"text/css"})
@@ -27,11 +27,11 @@ const app=http.createServer(async (req,res)=>{
     }
     else if(path.pathname=="/add"){
         res.writeHead(200,{"Content-Type":"text/html"});
-        res.end(fs.readFileSync("../clientside/pages/addemployi.html"))
+        res.end(fs.readFileSync("../clientside/pages/add.html"))
     }
-    else if(path.pathname=="/css/addeplyee.css"){
+    else if(path.pathname=="/css/add.css"){
         res.writeHead(200,{"Content-Type":"text/css"})
-        res.end(fs.readFileSync("../clientside/css/addeplyee.css"))
+        res.end(fs.readFileSync("../clientside/css/add.css"))
     }
     else if(path.pathname==("/info")){
         res.writeHead(200,{"Content-Type":"text/html"});
@@ -43,7 +43,7 @@ const app=http.createServer(async (req,res)=>{
     }
     else if(path.pathname==("/info/edit")){
         res.writeHead(200,{"Content-Type":"text/html"});
-        res.end(fs.readFileSync("../clientside/pages/employidetails.html"))
+        res.end(fs.readFileSync("../clientside/pages/details.html"))
     }
     else if(path.pathname=="/css/details.css"){
         res.writeHead(200,{"Content-Type":"text/css"})
@@ -61,9 +61,9 @@ const app=http.createServer(async (req,res)=>{
         res.writeHead(200,{"Content-Type":"text/js"})
         res.end(fs.readFileSync("../clientside/js/edit.js"))
     }
-    else if(path.pathname=="/photos/user.jpeg"){
-        res.writeHead(200,{"Content-Type":"image/jpeg"})
-        res.end(fs.readFileSync("../clientside/photos/user.jpeg"))
+    else if(path.pathname=="/images/profil.avif"){
+        res.writeHead(200,{"Content-Type":"images/avif"})
+        res.end(fs.readFileSync("../clientside/images/profil.avif"))
     }
 
     else if(path.pathname=="/submit"&&req.method=="POST"){
@@ -82,7 +82,7 @@ const app=http.createServer(async (req,res)=>{
                     
                 })
                 res.writeHead(200,{"Content-Type":"text/html"});
-        res.end(fs.readFileSync("../clientside/index.html"))
+        res.end(fs.readFileSync("../clientside/pages/index.html"))
             }
         })
     }
@@ -95,7 +95,7 @@ const app=http.createServer(async (req,res)=>{
 
 
     else if(path.pathname=="/delet"&&req.method=="DELETE"){
-        console.log(">>>>>>>>>>>>>>>>>>>>>>");
+        console.log("--------------------------------");
         let body=""
         req.on('data',(chunks)=>{
             body+=chunks.toString();
