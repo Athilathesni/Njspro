@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: gray;
+}
 nav{
     height: 100px;
     background-color: rgb(168, 173, 173);
@@ -17,19 +20,29 @@ nav{
     border: none;
 }nav button a{
     text-decoration: none;
-    color: red;
+    color: rgb(232, 232, 238);
 }
+
+ .btn1{
+    background-color: #007bff;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    margin-left: 700px;
+    border-radius: 10px;
+    box-shadow:0 2px 2px gray;
+}
+.btn1>a{
+    text-decoration: none;
+    color: white;
+} 
 
 .mainside{
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
     justify-content: space-evenly;
-    
 }
-
-
-
 .card {
     width: 280px; 
     height: 380px; 
@@ -44,7 +57,7 @@ nav{
 }
 
 .imagediv {
-    height: 120px; 
+    height: 190px; 
     background-color: #f7f7f7; 
     display: flex;
     justify-content: center;
@@ -52,10 +65,10 @@ nav{
 }
 
 .imagediv img {
-    border-radius: 50%; 
-    width: 80px; 
-    height: 80px; 
-    object-fit: cover; 
+    /* border-radius: 50%;  */
+    width: 100%; 
+    height: 100%; 
+    /* object-fit: cover;  */
 }
 
 .bottom {
@@ -68,19 +81,24 @@ nav{
 }
 
 .id, .name, .Desig {
+    text-transform: uppercase;
     margin: 2px 0; 
-    font-size: 14px; 
+    font-size: 16px; 
     color: #333; 
+    text-align: center;
 }
 
 .name {
-    font-weight: bold; 
+    text-transform: uppercase;
     font-size: 16px; 
+    text-align: center;
 }
 
 .Desig {
-    font-style: italic; 
-    color: #555; 
+    text-transform: uppercase;
+    color: #201d1d;
+    font-size: 16px; 
+    text-align: center;
 }
 
 .btn {
@@ -88,8 +106,7 @@ nav{
 }
 
 .btn button {
-    background-color: #007bff; 
-    color: #fff; 
+    background-color: #06090c; 
     border: none; 
     padding: 10px 15px; 
     border-radius: 5px; 
@@ -98,6 +115,16 @@ nav{
     font-size: 14px; 
 }
 
-.btn button:hover {
-    background-color: #0056b3; 
+/* .btn button:hover {
+    background-color: #ebeff4; 
+} */
+.btn button>a{
+    text-decoration: none;
+    color: white;
+}
+.span{
+    color: #06090c;
+    font-weight: bold;
+    text-align: center;
+    
 }

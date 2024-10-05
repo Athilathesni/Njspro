@@ -2,28 +2,22 @@ let url=window.location.href;
 let urlparams=new URLSearchParams(url.split("?")[1])
 let id=urlparams.get("id")
 
-
-
 async function editemployi() {
-    const res=await fetch(`http://localhost:3001/getData`)
+    const res=await fetch(`http://localhost:3000/getData`)
     const data=await res.json()
     datas=data[id]
-    console.log(id);
-    
-    
+    console.log(id);   
 str=``
-
-str+=
-    `
+str+=  `
     <div class="card">
 <div class="lside">
-   <img src="../photos/user.jpeg" alt="">
+   <img src="../images/profil.avif" alt="">
 
 </div>
 <div class="rside">
-    <input type="text"  placeholder="id" value="${datas.id}" id="id">
-    <input type="text"  placeholder="name"  value="${datas.name}" id="name">
-    <input type="text"  placeholder="designation"   value="${datas.designation}" id="designation">
+<input type="text"  placeholder="id" value="${datas.id}" id="id">
+<input type="text"  placeholder="name"  value="${datas.name}" id="name">
+    <input type="text"  placeholder="designation"  value="${datas.designation}" id="designation">
     <input type="text"  placeholder="salary"  value="${datas.salary}" id="salary">
 
     <input type="text"  placeholder="experience" value="${datas.experience}" id="experience">
@@ -51,33 +45,21 @@ async function save(a) {
     const experience=document.getElementById(`experience`).value;
     const phone=document.getElementById(`phone`).value;
     const email=document.getElementById(`email`).value;
-
-
-
-
-
-    
     console.log(name,designation,salary,experience,phone,email);
     const data = { a,id, name, designation, salary, experience, phone, email,};
-
-    const res=await fetch(`http://localhost:3001/update`,{
+    const res=await fetch(`http://localhost:3000/update`,{
         method:"PUT",
         headers:{"Content-Type":"text/json"},
         body:JSON.stringify(data)
-    })
-    
+    }) 
     if (res.status==200) {
         editemployi()
-        window.location.href="http://localhost:3001/"   
+        window.location.href="http://localhost:3000/"   
 
     }else{
         alert("faild")
     }
     
     }
-
-
-
-
 
 editemployi()

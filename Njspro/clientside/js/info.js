@@ -6,7 +6,7 @@ let id=urlparams.get("id")
 
 
 async function getEmploye() {
-    const res=await fetch(`http://localhost:3001/getData`)
+    const res=await fetch(`http://localhost:3000/getData`)
     const data=await res.json()
     datas=data[id]
     console.log(id);
@@ -18,17 +18,23 @@ str+=
     `
      <div class="details">
         <div class="leftside">
-            <img src="../photos/user.jpeg" alt="">
+            <img src="../images/profil.avif" alt="">
         </div>
         <div class="rightside">
-            <div class="emolyiid"><h3>${datas.id}</h3></div>
-            <div class="name"><h3>${datas.name}</h3></div>
-            <div class="designation"><h3>${datas.designation}</h3></div>
-            <div class="experience"><h3>${datas.experience}</h3></div>
-            <div class="salary"><h3>${datas.salary}</h3></div>
-            <div class="email"><h3>${datas.email}</h3></div>
-            <div class="phonenumber"><h3>${datas.phone}</h3></div>
-            <div class="btn"><Button><a href="http://localhost:3001/info/edit?id=${id}">Edit</a></Button><button onclick="dlt('${datas._id}')">Delete</button><button>Back</button></div>
+            <div class="emolyiid"><h3><span>EID:</span>${datas.id}</h3></div>
+            <div class="name"><h3><span>NAME:</span>${datas.name}</h3></div>
+            <div class="designation"><h3><span>DES:</span>${datas.designation}</h3></div>
+            <div class="experience"><h3><span>EXP:</span>${datas.experience}</h3></div>
+            <div class="salary"><h3><span>SALARY:</span>${datas.salary}</h3></div>
+            <div class="email"><h3><span>EMAIL:</span>${datas.email}</h3></div>
+            <div class="phonenumber"><h3><span>PHONE:</span>${datas.phone}</h3></div>
+        
+            <div class="btn"><Button><a href="http://localhost:3000/info/edit?id=${id}">Edit</a></Button>
+            <div class="btn1"><button onclick="dlt('${datas._id}')">Delete</button>
+            <div class="btn2"><button ><a href="http://localhost:3000/">Back</a></button></div>
+            </div>
+            </div>
+            
         </div>
     </div>
     
@@ -41,18 +47,15 @@ document.getElementById("main").innerHTML=str
 async function dlt(id) {
     x=confirm("Do You Want To Delete")
     if (x) {
-        let res=await fetch("http://localhost:3001/delet",{
+        let res=await fetch("http://localhost:3000/delet",{
             method:"DELETE",    
             headers:{"Content-Type":"text/plain"},
             body:id
         })
         if(res.status==200){
-            console.log("khguyg");
-         window.location.href="http://localhost:3001/"   
+            console.log("successfully");
+         window.location.href="http://localhost:3000/"   
         getEmploye()
-        }
-        else{
-            alert("failed")
         }
     }
    
